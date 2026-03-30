@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Stepsis AI | Diagnosis Results</title>
+</head>
+<body>
+    <div class="split-screen" style="display: flex; height: 100vh; width: 100%;">
+        <div class="left-panel" style="flex: 1.2; padding: 60px;">
+            {% if prediction == 1 %}
+                <h1 style="color: #ff4b4b; background: none; -webkit-text-fill-color: #ff4b4b;">Warning: Risk Detected</h1>
+                <p class="quote-box">Hello {{ name }}, our system has detected clinical markers that require immediate attention.</p>
+            {% else %}
+                <h1 style="color: #00e676; background: none; -webkit-text-fill-color: #00e676;">Diagnosis: Normal</h1>
+                <p class="quote-box">Hello {{ name }}, your vital signs appear to be within the safe range.</p>
+            {% endif %}
+            <p class="quote-box" style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Based on the clinical parameters provided, here is our AI's medical assessment and advice.</p>
+        </div>
+
+        <div class="right-panel" style="flex: 1; display: flex; justify-content: center; align-items: center; background: #0d0d0d;">
+            <div class="glass-card" style="padding: 40px; border-radius: 30px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); width: 80%;">
+                
+                {% if prediction == 1 %}
+                    <h2 style="color: #ff4b2b; text-align: center; font-size: 2rem;">🚨 SEPSIS ALERT!</h2>
+                    <p style="color: #ccc; text-align: center; margin-bottom: 20px;">An emergency alert mail has been sent to your registered email ID.</p>
+                    
+                    <div style="background: rgba(255, 75, 75, 0.1); padding: 20px; border-radius: 15px; border-left: 5px solid #ff4b4b; margin-bottom: 20px;">
+                        <h4 style="color: #ffcccc; margin-bottom: 10px;">Immediate Actions:</h4>
+                        <ul style="color: #eee; font-size: 0.9rem; line-height: 2;">
+                            <li>⚠️ Emergency: Contact medical services immediately.</li>
+                            <li>🩺 IV Antibiotics and Fluids may be required.</li>
+                            <li>🏥 Continuous monitoring of vitals is mandatory.</li>
+                        </ul>
+                    </div>
+                    
+                    <script>
+                        function playBeep() {
+                            try {
+                                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                                const oscillator = audioCtx.createOscillator();
+                                const gainNode = audioCtx.createGain();
+
+                                oscillator.connect(gainNode);
+                                gainNode.connect(audioCtx.destination);
+
+                                oscillator.type = 'square'; // Very loud and sharp "alarm" sound
+                                oscillator.frequency.setValueAtTime(880, audioCtx.currentTime); // High pitch pitch
+                                gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); // Volume level
+
+                                oscillator.start();
+                                // Continuous beep for 2 seconds to grab attention
+                                oscillator.stop(audioCtx.currentTime + 2.0);
+                            } catch (e) {
+                                console.log("Audio play failed. Interaction might be needed.");
+                            }
+                        }
+                        // Plays as soon as the result page loads
+                        window.onload = playBeep;
+                    </script>
+
+                {% else %}
+                    <h2 style="color: #38ef7d; text-align: center; font-size: 2rem;">No Sepsis Detected</h2>
+                    <p style="color: #ccc; text-align: center; margin-bottom: 20px;">You are currently safe. Maintain a healthy lifestyle and regular checkups.</p>
+                    
+                    <div style="background: rgba(56, 239, 125, 0.1); padding: 20px; border-radius: 15px; border-left: 5px solid #38ef7d;">
+                        <h4 style="color: #d1ffd6; margin-bottom: 10px;">Prevention Tips:</h4>
+                        <ul style="color: #eee; font-size: 0.9rem; line-height: 2;">
+                            <li>✅ Maintain hygiene to prevent infections.</li>
+                            <li>🥗 Continue healthy nutrition and hydration.</li>
+                            <li>🏃 Keep your immunity strong with regular exercise.</li>
+                        </ul>
+                    </div>
+                {% endif %}
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="/" class="btn-primary" style="text-decoration: none; display: inline-block; padding: 15px 40px; background: linear-gradient(45deg, #ff0055, #7000ff); border-radius: 15px; color: white; font-weight: bold; transition: 0.3s;">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1a0b1a, #0a0a0a);
+    color: #f0f0f0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Layout Split */
+.split-screen {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.left-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    background: linear-gradient(135deg, rgba(255, 0, 85, 0.05) 0%, rgba(112, 0, 255, 0.05) 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* Typography */
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ff7eb3, #e100ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.quote-box {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #bbb;
+    max-width: 80%;
+    text-align: center;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* Premium Form */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    color: #ff7eb3;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #e100ff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 16px;
+    border-radius: 15px;
+    border: none;
+    background: linear-gradient(45deg, #ff0055, #7000ff);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.4s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(225, 0, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 1s ease forwards; }
+
+/* Add/Update these in your style.css */
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Changed from center to top for better scrolling */
+    padding: 40px;
+    background: #0d0d0d;
+    overflow-y: auto; /* Enables scrolling if form is long */
+}
+
+.glass-card {
+    margin-top: auto;
+    margin-bottom: auto;
+    /* Ensuring card doesn't get too squashed */
+    min-height: min-content; 
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Medical Reference Ranges</title>
+</head>
+<body>
+    <div class="split-screen">
+        <div class="left-panel">
+            <h1>Reference Ranges</h1>
+            <p class="quote-box">Understanding these clinical thresholds helps in early intervention and better patient management.</p>
+            <a href="/predict_page" class="btn-primary" style="width: 200px;">Go Back to Form</a>
+        </div>
+        <div class="right-panel">
+            <div class="glass-card fade-in" style="max-width: 600px;">
+                <h2 style="margin-bottom: 20px; color: #ff7eb3;">Vital Sign Thresholds</h2>
+                <table style="width: 100%; border-collapse: collapse; color: #ddd; text-align: left;">
+                    <tr style="border-bottom: 2px solid #ff0055; color: #fff;">
+                        <th style="padding: 12px;">Parameter</th>
+                        <th style="padding: 12px;">Normal Range</th>
+                        <th style="padding: 12px;">Sepsis Risk</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;">Heart Rate</td>
+                        <td style="padding: 12px;">60 - 90 BPM</td>
+                        <td style="padding: 12px;">> 90 BPM</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;">Oxygen (SpO2)</td>
+                        <td style="padding: 12px;">95 - 100%</td>
+                        <td style="padding: 12px;">< 90%</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;">Temperature</td>
+                        <td style="padding: 12px;">36 - 37.5°C</td>
+                        <td style="padding: 12px;">> 38°C or < 36°C</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 12px;">Respiratory Rate</td>
+                        <td style="padding: 12px;">12 - 20/min</td>
+                        <td style="padding: 12px;">> 22/min</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 12px;">WBC Count</td>
+                        <td style="padding: 12px;">4 - 11k</td>
+                        <td style="padding: 12px;">> 12k or < 4k</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
